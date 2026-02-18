@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media queries(min-width)</title>
+    <style>
+        .box{
+            height:50px;
+            width:50px;
+            padding:10px;
+            background-color: lightcoral;
+        }
+        @media only screen and (min-width: 60px) and (max-width: 100px) {
+            .box{
+                background-color: lightblue;
+                height:100px;
+                width:100px;
+            }
+        }</style>
+</head>
+<body>
+    <div class="box">Box 1</div>
+</body>
+</html>

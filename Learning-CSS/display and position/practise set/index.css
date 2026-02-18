@@ -1,0 +1,60 @@
+*{
+    margin:0;
+    padding:0;
+}
+nav{
+    padding:5px;
+}
+nav a{
+   
+    text-decoration:none;
+    margin-left:55px;
+    padding:5px;
+}
+header{
+    background-color: blanchedalmond;
+    height:30px;
+}
+#second{
+    height:50px;
+    width:50px;
+    background-color: green;
+    border-radius:50%
+}
+.box{
+    height: 100px;
+    width: 100px;
+    background-color:violet;
+    margin-top:15px;
+   
+}
+#container{
+   border:3px solid black;
+   margin:5px; 
+}
+#box4{
+    background-color:cyan;
+    position:fixed;
+    right:10px;
+}
+#box5{
+    background-color:coral;
+   height:50px;
+    width:50px;
+    right:157px;
+    position:absolute;
+    z-index:1;
+}
+#box6{
+    background-color:darkblue;
+   height: 50px;
+    width: 50px;
+    position:absolute;
+    right:200px;
+    z-index:2;
+}
+footer{
+    background-color: blanchedalmond;
+    bottom:0px;
+    position:fixed;
+}

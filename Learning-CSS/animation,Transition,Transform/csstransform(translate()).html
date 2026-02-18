@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS TRANSFORM TRANSLATE()</title>
+    <style>
+        .box{
+            height:50px;
+            width:50px;
+            padding:25px;
+            margin:200px;
+            border:2px solid black;
+            transition:all 1s ease-in;
+        }
+        #box1{
+            background-color: red;
+
+        }
+        #box1:hover{
+            transform:translate(100px,100px);
+        }
+        #box2{
+            background-color: blue;
+        }
+        #box2:hover{
+            transform:translatex(200px);
+            transform:skewY(90deg);
+        }
+        #box3{
+            background-color: green;
+        }
+        #box3:hover{
+            transform:translatey(300px);
+            transform:skewX(45deg);
+        }
+        #box4{
+            background-color: yellow;
+        }
+        #box4:hover{
+            transform:translate(100px,200px);
+        }
+    </style>
+</head>
+<body>
+    <div id="box1" class="box"> Box 1</div>
+    <div id="box2" class="box"> Box 2</div>
+    <div id="box3" class="box"> Box 3</div>
+    <div id="box4" class="box"> Box 4</div>
+</body>
+</html>

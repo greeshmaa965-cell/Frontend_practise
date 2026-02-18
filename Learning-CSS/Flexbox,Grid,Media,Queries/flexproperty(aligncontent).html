@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexBox direction</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            height:50px;
+            width:50px;
+            border:3px solid black;
+            margin-right:5px;
+        }
+        #heading{
+            text-align: center;
+        }
+        #container{
+            height:300px;
+            width:300px;
+            padding:10px;
+            margin:20px;
+            text-align: center;
+            border:3px solid black;
+            display: flex;
+            flex-direction: row;
+           flex-wrap:wrap;
+            justify-content:center;
+            align-content: flex-start;
+             /*align-content: flex-start;
+            align-content: flex-end;
+            align-content: center;
+            align-content: space-between;
+            align-content: space-around;
+            align-content: space-evenly;*/  
+            
+            
+            
+        }
+        #box1{
+            background-color:aqua;
+        }
+        #box2{
+            background-color:lightgreen;
+        }
+        #box3{
+            background-color:lightpink;
+        }
+        #box4{
+            background-color:tomato;
+        }
+        #box5{
+            background-color:lightyellow;
+        }   
+        #box6{
+            background-color:lightgray;
+        }
+        #box7{
+            background-color:lightcyan;
+        }
+        #box8{
+            background-color:lightcoral;
+        }
+
+    </style>
+
+</head>
+<body>
+    <h1 id="heading">FlexBox Direction</h1>
+    <div id="container">
+        <div class="box" id="box1">Flexbox 1</div>
+        <div class="box" id="box2">Flexbox 2</div>
+        <div class="box" id="box3">Flexbox 3</div>
+        <div class="box" id="box4">Flexbox 4</div>
+        <div class="box" id="box5">Flexbox 5</div>
+        <div class="box" id="box6">Flexbox 6</div>
+        <div class="box" id="box7">Flexbox 7</div>
+        <div class="box" id="box8">Flexbox 8</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pseudo classes</title>
+    <style>
+        .btn{
+            width: 200px;
+            height: 75px;
+            background-color: red;
+            border:5px solid black;
+            border-radius:10px;
+            transition-property: all;
+            transition-duration: 1s;
+            transition-timing-function:ease-in-out;
+            transition-delay: 1s;
+        }
+        .btn:hover{
+            background-color: blue;
+            height:80px;
+            width:200px;
+        }
+        .btn:active{
+            background-color: green;
+            height: 90px;
+            width: 200px;
+        }</style>
+</head>
+<body>
+    <button class="btn">Click me </button>
+</body>
+</html>
