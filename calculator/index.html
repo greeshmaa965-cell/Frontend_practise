@@ -3,36 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <meta name="description" content="Professional Scientific Calculator with premium glassmorphic design and advanced functions.">
+    <title>Quantum Calc | Professional Scientific Calculator</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div id="calculator">
-    <input id="Input_container" type="text" readonly><br>
-    <div id="Button_container">
-        <button class="btn"  onclick="currentDisplay=''; document.querySelector('#Input_container').value=currentDisplay;" >C</button>
-        <button class="btn" onclick="currentDisplay+='/', document.querySelector('#Input_container').value=currentDisplay;" >/</button>
-        <button class="btn" onclick="currentDisplay+='*'; document.querySelector('#Input_container').value=currentDisplay;" >*</button>
-        <button class="btn" onclick="currentDisplay+='-'; document.querySelector('#Input_container').value=currentDisplay;" >-</button>
-        <button class="btn" onclick="currentDisplay+='+'; document.querySelector('#Input_container').value=currentDisplay;" >+</button>
-        <button class="btn" onclick=" let result=eval(currentDisplay); currentDisplay=result; document.querySelector('#Input_container').value=currentDisplay;" >=</button>
-        <button class="btn" onclick="currentDisplay+='.'; document.querySelector('#Input_container').value=currentDisplay;" >.</button>
-        <button class="btn" onclick="currentDisplay+='0'; document.querySelector('#Input_container').value=currentDisplay;" >0 </button>
-        <button class="btn" onclick="currentDisplay+='1'; document.querySelector('#Input_container').value=currentDisplay;" >1</button>
-        <button class="btn" onclick="currentDisplay+='2'; document.querySelector('#Input_container').value=currentDisplay;" >2</button>
-        <button class="btn" onclick="currentDisplay+='3'; document.querySelector('#Input_container').value=currentDisplay;" >3</button>
-        <button class="btn" onclick="currentDisplay+='4'; document.querySelector('#Input_container').value=currentDisplay;" >4</button>
-        <button class="btn" onclick="currentDisplay+='5'; document.querySelector('#Input_container').value=currentDisplay;" >5</button>
-        <button class="btn" onclick="currentDisplay+='6'; document.querySelector('#Input_container').value=currentDisplay;" >6</button>
-        <button class="btn" onclick="currentDisplay+='7'; document.querySelector('#Input_container').value=currentDisplay;" >7</button>
-        <button class="btn" onclick="currentDisplay+='8'; document.querySelector('#Input_container').value=currentDisplay;" >8</button>
-        <button class="btn" onclick="currentDisplay+='9'; document.querySelector('#Input_container').value=currentDisplay;" >9</button>
-    </div>
-    </div>
-    <script>
-        let currentDisplay='';
-        document.querySelector('#Input_container').value=currentDisplay;
+        <div class="mode-toggle">
+            <span>Scientific Mode</span>
+            <span id="toggle-sci">Show</span>
+        </div>
 
-    </script>
+        <div class="display-container">
+            <div id="previous_op"></div>
+            <input id="Input_container" type="text" placeholder="0" readonly>
+        </div>
+
+        <div class="scientific-row" id="sci-keys">
+            <button class="btn scientific" onclick="appendSci('sin(')">sin</button>
+            <button class="btn scientific" onclick="appendSci('cos(')">cos</button>
+            <button class="btn scientific" onclick="appendSci('tan(')">tan</button>
+            <button class="btn scientific" onclick="appendSci('log(')">log</button>
+            <button class="btn scientific" onclick="appendSci('sqrt(')">√</button>
+            <button class="btn scientific" onclick="appendSci('pow(')">x<sup>y</sup></button>
+            <button class="btn scientific" onclick="appendValue('(')">(</button>
+            <button class="btn scientific" onclick="appendValue(')')">)</button>
+        </div>
+
+        <div class="buttons-grid">
+            <!-- Row 1 -->
+            <button class="btn special" onclick="clearDisplay()">AC</button>
+            <button class="btn special" onclick="deleteLast()">DEL</button>
+            <button class="btn operator" onclick="appendValue('%')">%</button>
+            <button class="btn operator" onclick="appendValue('/')">÷</button>
+
+            <!-- Row 2 -->
+            <button class="btn" onclick="appendValue('7')">7</button>
+            <button class="btn" onclick="appendValue('8')">8</button>
+            <button class="btn" onclick="appendValue('9')">9</button>
+            <button class="btn operator" onclick="appendValue('*')">×</button>
+
+            <!-- Row 3 -->
+            <button class="btn" onclick="appendValue('4')">4</button>
+            <button class="btn" onclick="appendValue('5')">5</button>
+            <button class="btn" onclick="appendValue('6')">6</button>
+            <button class="btn operator" onclick="appendValue('-')">−</button>
+
+            <!-- Row 4 -->
+            <button class="btn" onclick="appendValue('1')">1</button>
+            <button class="btn" onclick="appendValue('2')">2</button>
+            <button class="btn" onclick="appendValue('3')">3</button>
+            <button class="btn operator" onclick="appendValue('+')">+</button>
+
+            <!-- Row 5 -->
+            <button class="btn" onclick="appendValue('0')">0</button>
+            <button class="btn" onclick="appendValue('.')">.</button>
+            <button class="btn equals" onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
