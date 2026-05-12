@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Myntra Clone</title>
     <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 </head>
 <body>
@@ -27,26 +28,35 @@ search
 </span> <input class="search_input"placeholder="Search for products, brands and more" >
 </div>
 <div class="action_bar">
-            <div class="action_container">
+            <div class="action_container" id="profile-btn">
                 <span class="material-symbols-outlined action_icon">person</span>
                 <span class="action_name">Profile</span>
             </div>
 
-            <div class="action_container">
+            <div class="action_container" id="wishlist-btn">
                 <span class="material-symbols-outlined action_icon">favorite</span>
                 <span class="action_name">Wishlist</span>
             </div>
 
-            <div class="action_container">
+            <div class="action_container" id="bag-btn">
                 <span class="material-symbols-outlined action_icon">shopping_bag</span>
                 <span class="action_name">Bag</span>
+                <span class="bag-item-count">0</span>
             </div>
         </div>
         </header>
         <main>
             <div class="banner_container">
-            <img class="banner_image" src="images/banner.jpg" alt="Main Banner">
-        </div>
+                <div class="slider">
+                    <div class="slides">
+                        <img class="banner_image active" src="images/banner.jpg" alt="Main Banner 1">
+                        <img class="banner_image" src="images/banner.jpg" style="filter: hue-rotate(90deg);" alt="Main Banner 2">
+                        <img class="banner_image" src="images/banner.jpg" style="filter: hue-rotate(180deg);" alt="Main Banner 3">
+                    </div>
+                    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+                </div>
+            </div>
         <div class="category_heading">MEDAL WORTHY BRANDS TO BAG</div>
         <div class="category_items">
             <a href="#"><img class="sale_item" src="images/offers/1.png"></a>
@@ -121,5 +131,6 @@ search
             © 2023 www.myntra.com. All rights reserved.
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
