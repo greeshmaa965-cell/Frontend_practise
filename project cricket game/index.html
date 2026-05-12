@@ -3,80 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Cricket Arena</title>
     <link rel="stylesheet" href="index.css">
-    <title>Cricket Game</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Bat Ball Stump Game</h1>
-    <button onclick="
-       const userchoice = 'bat';
-    
-        let randomNumber = Math.random() * 3;
-        let computerchoice;
-        if (randomNumber < 1 && randomNumber >= 0) {
-            computerchoice = 'bat';
+    <div class="banner">
+        <h1>Cricket Arena</h1>
+    </div>
+
+    <div class="game-container">
+        <h2 class="options-title">Make Your Strategic Move</h2>
+        
+        <div class="options">
+            <div class="option-card" onclick="playGame('bat')">
+                <img src="images/bat.png" alt="Bat">
+                <span>Strike (Bat)</span>
+            </div>
+            <div class="option-card" onclick="playGame('ball')">
+                <img src="images/ball.png" alt="Ball">
+                <span>Delivery (Ball)</span>
+            </div>
+            <div class="option-card" onclick="playGame('stump')">
+                <img src="images/stump.png" alt="Stump">
+                <span>Defend (Stump)</span>
+            </div>
+        </div>
+
+        <div id="results" class="results-section">
+            <div id="resultText" class="result-header"></div>
+            <div class="detail-row">
+                <div class="choice-box">
+                    <span class="choice-label">Your Move</span>
+                    <span id="userChoiceText" class="choice-value"></span>
+                </div>
+                <div class="choice-box">
+                    <span class="choice-label">AI Strategy</span>
+                    <span id="compChoiceText" class="choice-value"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="score-container">
+            <div class="score-item">
+                <span class="score-label">Human Wins</span>
+                <span id="userScore" class="score-value">0</span>
+            </div>
+            <div class="score-item">
+                <span class="score-label">AI Wins</span>
+                <span id="compScore" class="score-value">0</span>
+            </div>
+            <div class="score-item">
+                <span class="score-label">Deadlocks</span>
+                <span id="drawScore" class="score-value">0</span>
+            </div>
+            <div class="score-item">
+                <span class="score-label">Rounds</span>
+                <span id="totalRounds" class="score-value">0</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="reset-btn" onclick="resetGame()">Reset Arena</button>
+        </div>
+    </div>
+
+    <script>
+        let score = {
+            user: 0,
+            comp: 0,
+            draw: 0,
+            rounds: 0
+        };
+
+        // Load score from localStorage if available
+        const savedScore = localStorage.getItem('cricketGameScore');
+        if (savedScore) {
+            score = JSON.parse(savedScore);
+            updateScoreUI();
+        }
+
+        function updateScoreUI() {
+            document.getElementById('userScore').innerText = score.user;
+            document.getElementById('compScore').innerText = score.comp || 0;
+            document.getElementById('drawScore').innerText = score.draw || 0;
+            document.getElementById('totalRounds').innerText = score.rounds || 0;
+        }
+
+        function saveScore() {
+            localStorage.setItem('cricketGameScore', JSON.stringify(score));
+        }
+
+        function resetGame() {
+            score = { user: 0, comp: 0, draw: 0, rounds: 0 };
+            updateScoreUI();
+            saveScore();
+            document.getElementById('results').style.display = 'none';
+        }
+
+        function playGame(userChoice) {
+            const choices = ['bat', 'ball', 'stump'];
+            const compChoice = choices[Math.floor(Math.random() * 3)];
+            let result = '';
+            let resultClass = '';
+
+            score.rounds++;
+
+            if (userChoice === compChoice) {
+                result = 'Match Draw';
+                resultClass = 'draw';
+                score.draw++;
+            } else if (
+                (userChoice === 'bat' && compChoice === 'ball') ||
+                (userChoice === 'ball' && compChoice === 'stump') ||
+                (userChoice === 'stump' && compChoice === 'bat')
+            ) {
+                result = 'YOU SURGED A WIN!';
+                resultClass = 'win';
+                score.user++;
+            } else {
+                result = 'AI DOMINATED';
+                resultClass = 'loss';
+                score.comp++;
+            }
+
+            // Update UI
+            const resultsSection = document.getElementById('results');
+            const resultText = document.getElementById('resultText');
+            const userChoiceText = document.getElementById('userChoiceText');
+            const compChoiceText = document.getElementById('compChoiceText');
+
+            resultsSection.style.display = 'block';
+            resultText.innerText = result;
+            resultText.className = 'result-header ' + resultClass;
+            userChoiceText.innerText = userChoice.toUpperCase();
+            compChoiceText.innerText = compChoice.toUpperCase();
+
+            updateScoreUI();
+            saveScore();
             
-        } else if (randomNumber < 2 && randomNumber >= 1) {
-             computerchoice = 'ball';
-           
-        } else {
-            computerchoice = 'stump';
-           
+            // Scroll to results
+            resultsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
-            let result;
-        if (computerchoice === 'bat') {
-          result = 'Match Draw';
-        } else if (computerchoice === 'ball') {
-            result = 'You Win';
-        } else {
-            result = 'Computer Wins';
-        }
-        alert( 'You chose ' + userchoice + '\n' + 'Computer choice is ' + computerchoice + '\n' + result);
-    ">Bat</button>
-    <button  onclick="
-       randomNumber = Math.random() * 3;
-       if (randomNumber < 1 && randomNumber >= 0) {
-            computerchoice = 'bat';
-            
-        } else if (randomNumber < 2 && randomNumber >= 1) {
-             computerchoice = 'ball';
-           
-        } else {
-            computerchoice = 'stump';
-           
-        }
-        userchoice = 'ball';
-       let  result;
-       if(computerchoice === 'bat') 
-           result = 'Computer Wins';
-       else if(computerchoice === 'ball')
-           result = 'Match Draw'; 
-       else        
-           result = 'You Win';
-       alert( 'You chose ' + userchoice + '\n' + 'Computer choice is ' + computerchoice + '\n' + result);
-    ">Ball 
-    </button>
-    <button  onclick="
-        randomNumber = Math.random() * 3;
-       if (randomNumber < 1 && randomNumber >= 0) {
-            computerchoice = 'bat';
-            
-        } else if (randomNumber < 2 && randomNumber >= 1) {
-             computerchoice = 'ball';
-           
-        } else {
-            computerchoice = 'stump';
-           
-        }
-        userchoice = 'stump';
-       let result;
-       if(computerchoice === 'bat') 
-           result = 'You Win';
-       else if(computerchoice === 'ball')
-           result = 'Computer Wins'; 
-       else        
-           result = 'Match Draw';
-       alert( 'You chose ' + userchoice + '\n' + 'Computer choice is ' + computerchoice + '\n' + result);  
-    ">Stump</button>
+    </script>
 </body>
 </html>
